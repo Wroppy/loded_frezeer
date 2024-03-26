@@ -7,6 +7,7 @@ import styles from "@/app/components/navbar/drawer/drawer.module.css";
 import { useState } from "react";
 import DrawerHeader from "@/app/components/navbar/drawer/drawer-header";
 import DrawerLinks from "@/app/components/navbar/drawer/drawer-links";
+import DrawerFooter from "@/app/components/navbar/drawer/drawer-footer";
 
 const VerticalNav = () => {
   const [open, setOpen] = useState(false);
@@ -14,13 +15,13 @@ const VerticalNav = () => {
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
 
-
   return (
     <>
       <Drawer anchor="left" open={open} onClose={closeDrawer}>
         <div className={styles.drawer}>
-          <DrawerHeader/>
-          <DrawerLinks/>
+          <DrawerHeader />
+          <DrawerLinks />
+          <DrawerFooter />
         </div>
       </Drawer>
       <Button onClick={openDrawer} className={styles.drawerButton}>
