@@ -24,7 +24,7 @@ const DrawerLinks = () => {
           key={link.name}
         >
           {<link.Icon />}
-          <span>{link.name}</span>
+          <span className={styles.linkText}>{link.name}</span>
         </Button>
       ))}
     </div>

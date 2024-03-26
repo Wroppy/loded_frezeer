@@ -46,3 +46,8 @@
 .logoutIcon {
   color: var(--error-primary) !important;
 }
+
+.linkText{ 
+  display: flex;
+  align-items: center;
+}
