@@ -23,7 +23,6 @@
 
 * {
   box-sizing: border-box;
-  color: var(--text-primary);
 }
 
 html, body {
@@ -47,6 +46,7 @@ a {
 }
 
 .app {
+  color: var(--text-primary);
   background-color: var(--background-primary);
   display: grid;
   grid-template-columns: 1fr;
