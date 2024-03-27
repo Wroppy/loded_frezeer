@@ -8,7 +8,7 @@ import AuthFormFields from "@/app/components/user-auth-form/auth-form-fields";
 
 const AuthForm = ({ register = false, action }) => {
   return (
-    <form className={styles.form} >
+    <form className={styles.form} action={action}>
       <div className={styles.formTitle}>{register ? "Register" : "Login"}</div>
       <div className={styles.formInputs}>
         <AuthFormFields register={register} />
@@ -21,7 +21,7 @@ const AuthForm = ({ register = false, action }) => {
           </Link>
         </div>
 
-        <Button variant="outlined">{register ? "Register" : "Login"}</Button>
+        <Button type="submit" variant="outlined">{register ? "Register" : "Login"}</Button>
       </div>
     </form>
   );

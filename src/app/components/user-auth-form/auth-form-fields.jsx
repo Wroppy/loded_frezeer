@@ -12,6 +12,8 @@ const AuthInputFields = ({ register }) => {
           type="text"
           placeholder="Name"
           label="Name"
+          inputProps={{ minLength: 3, maxLength: 20}}
+
         />
       )}
       <TextField
@@ -21,8 +23,11 @@ const AuthInputFields = ({ register }) => {
         type="email"
         placeholder="Email"
         className={styles.authInput}
+        inputProps={{ minLength: 6, maxLength: 255}}
+
       />
       <TextField
+        inputProps={{ minLength: 6, maxLength: 1024}}
         required
         className={styles.authInput}
         size="small"
