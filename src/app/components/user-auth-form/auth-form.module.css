@@ -1,0 +1,49 @@
+.form {
+  height: 500px;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 500px;
+  padding: 32px;
+  background-color: var(--background-dark);
+  border-radius: 32px;
+
+  box-shadow: 5px 7px 14px 0px rgb(13, 13, 13);
+}
+
+.authInput + .authInput {
+  margin-top: 16px;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.formTitle {
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.formFooter {
+  display: flex;
+  margin-top: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.formLink {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* 
+Sets the form width to 100% if the 
+webpage is smaller than the specified size 
+*/
+@media (max-width: 500px) {
+  .form {
+    width: 100%;
+  }
+}
