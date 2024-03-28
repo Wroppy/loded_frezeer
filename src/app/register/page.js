@@ -2,6 +2,7 @@
 
 import AuthForm from "@/app/components/user-auth-form/auth-form";
 import styles from "@/app/register/register.module.css";
+import { postFetch } from "@/app/lib/clientFetch";
 
 const RegisterPage = () => {
   // Registers a user with the given form data
@@ -9,13 +10,7 @@ const RegisterPage = () => {
     // Returns are dealt with in the AuthForm component
     try {
       // Sends a request to the server to register the user
-      const res = await fetch("/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(registerData),
-      });
+      const res = await postFetch("register", registerData);
 
       // If the request was not successful, the user is not registered
       if (!res.ok) {

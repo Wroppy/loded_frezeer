@@ -29,7 +29,10 @@ const AuthForm = ({ register = false, action }) => {
 
     if (!success) {
       setError(error);
+      return;
     }
+
+    console.log("success");
   };
 
   return (
@@ -49,7 +52,7 @@ const AuthForm = ({ register = false, action }) => {
           </Link>
         </div>
         <div className={styles.authSubmit}>
-          {loading && <CircularProgress size={24}/>}
+          {loading && <CircularProgress size={24} />}
 
           <Button disabled={loading} type="submit" variant="outlined">
             {register ? "Register" : "Login"}
