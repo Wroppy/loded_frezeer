@@ -20,7 +20,7 @@ export const createUser = async (name, email, password) => {
     const newUser = new User({ name, email, password });
     const user = await User.create(newUser);
 
-    return { success: true, user };
+    return { success: true };
     
   } catch (error) {
     return { success: false, error };
