@@ -6,4 +6,6 @@ export const postFetch = async (url, body) => {
     },
     body: JSON.stringify(body),
   });
+
+  return res;
 };
