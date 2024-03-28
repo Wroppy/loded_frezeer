@@ -25,8 +25,8 @@ export async function POST(req, res) {
     return NextResponse.json({ success: true });
   } catch (e) {
     return NextResponse.json({
-      sucess: false,
-      error: "An error occured in the server",
+      success: false,
+      error: "An error occurred in the server",
     });
   }
 }
