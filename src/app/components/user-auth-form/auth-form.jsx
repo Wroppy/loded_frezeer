@@ -11,7 +11,7 @@ import { useState } from "react";
 const AuthForm = ({ register = false, action }) => {
   // Error for the form
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const submitForm = async (e) => {
     e.preventDefault(); // Stops reload
