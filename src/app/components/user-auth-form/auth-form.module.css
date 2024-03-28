@@ -50,7 +50,6 @@ webpage is smaller than the specified size
 
 
 .error {
-  color: var(--error);
-  font-size: 0.8rem;
+  color: var(--error-primary);
   margin-top: 8px;
 }

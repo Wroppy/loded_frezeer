@@ -6,9 +6,11 @@ import { Button, TextField } from "@mui/material";
 import styles from "@/app/components/user-auth-form/auth-form.module.css";
 import Link from "next/link";
 import AuthFormFields from "@/app/components/user-auth-form/auth-form-fields";
-
+import { useState } from "react";
 
 const AuthForm = ({ register = false, action }) => {
+  // Error for the form
+  const [error, setError] = useState("");
   
   const submitForm = async (e) => {
     e.preventDefault(); // Stops reload
@@ -17,9 +19,12 @@ const AuthForm = ({ register = false, action }) => {
     const formData = Object.fromEntries(new FormData(e.target).entries());
   
     const {success, error} = await action(formData); 
+
+    if (!success) {
+      setError(error);
+    }
+
     
-    console.log(success, error);
-      
   }
 
   return (
@@ -30,14 +35,15 @@ const AuthForm = ({ register = false, action }) => {
       </div>
       <div className={styles.formFooter}>
         <div className={styles.formFooterText}>
-          {register ? "Already have an account?" : "Don't have an account?"}
+          {register ? "Already have an account? " : "Don't have an account? "}
           <Link className={styles.formLink} href={register ? "/login" : "/register"}>
-            {register ? " Login" : " Register"}
+            {register ? "Login" : "Register"}
           </Link>
         </div>
 
         <Button type="submit" variant="outlined">{register ? "Register" : "Login"}</Button>
       </div>
+      <div className={styles.error}>{error}</div>
     </form>
   );
 };
