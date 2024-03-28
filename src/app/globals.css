@@ -1,4 +1,3 @@
-
 :root {
   --error-primary: #ff0004;
 
@@ -25,7 +24,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
@@ -45,6 +45,8 @@ a {
   grid-area: 1 / 1 / 2 / 2;
 }
 
+/* Sets up initial layout of the home page */
+/* Grid has 2 rows 1 column. */
 .app {
   color: var(--text-primary);
   background-color: var(--background-primary);
@@ -55,16 +57,13 @@ a {
   height: 100%;
 }
 
-
-.css-qb7u9c-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 100px var(--background-primary) inset !important;
-}
+/* Removes the auto complete background colour on MUI's textfield*/
+.css-qb7u9c-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill,
 .css-3fxpjh-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 100px var(--background-primary) inset !important;
-
 }
 /* For MUI's label going outside the input for the default size*/
-.css-qb7u9c-MuiInputBase-input-MuiOutlinedInput-input{
+.css-qb7u9c-MuiInputBase-input-MuiOutlinedInput-input {
   height: auto !important;
 }
 /* For MUI's label going outside the TextField for the small size */
