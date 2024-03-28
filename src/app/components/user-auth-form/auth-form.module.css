@@ -53,3 +53,10 @@ webpage is smaller than the specified size
   color: var(--error-primary);
   margin-top: 8px;
 }
+
+
+.authSubmit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
