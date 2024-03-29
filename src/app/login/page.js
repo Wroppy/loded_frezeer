@@ -2,30 +2,30 @@
 
 import styles from "@/app/login/login.module.css";
 import AuthForm from "@/app/components/user-auth-form/auth-form";
-import { postFetch } from "@/app/lib/clientFetch";
+import { signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 const LoginPage = () => {
+  const { data: session } = useSession();
   const login = async (loginData) => {
     try {
       // gets the name and password from the form
       const { email, password } = loginData;
 
-      // sends the data to the server
-      const response = await postFetch("login", { email, password });
+      // sends the name and password to the server to sign in
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
 
-      // if the request was not successful, the user is not logged in
-      if (!response.ok) {
-        return { success: false, error: "An error occurred in the server" };
+      if (res.error) {
+        return { success: false, error: "Invalid Credentials" };
       }
 
-      // if the request was successful, checks for an error
-      const data = await response.json();
-      if (data.error) {
-        return { success: false, error: data.error };
-      }
 
-      // if there is no error, the user is logged in
-      return { success: true };
+      // Returns the users name
+      return { success: false, error: session?.user?.name };
     } catch (e) {
       return { success: false, error: "An error occurred in the client" };
     }

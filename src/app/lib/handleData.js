@@ -44,7 +44,6 @@ export const isAuthValid = async (email, password) => {
   if (!isValid) {
     return { success: false, error: "Password is incorrect", password, pass: user.password };
   }
-
-  return { success: true };
+  return { success: true, user: {name: user.name} };
 
 }
