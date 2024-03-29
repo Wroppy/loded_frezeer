@@ -3,7 +3,6 @@
 import styles from "@/app/login/login.module.css";
 import AuthForm from "@/app/components/user-auth-form/auth-form";
 import { login } from "@/app/utils/login";
-import { signOut, useSession } from "next-auth/react";
 
 const LoginPage = () => {
 
