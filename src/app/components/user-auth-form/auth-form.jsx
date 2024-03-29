@@ -7,11 +7,14 @@ import styles from "@/app/components/user-auth-form/auth-form.module.css";
 import Link from "next/link";
 import AuthFormFields from "@/app/components/user-auth-form/auth-form-fields";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const AuthForm = ({ register = false, action }) => {
   // Error for the form
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
 
   const submitForm = async (e) => {
     e.preventDefault(); // Stops reload
@@ -32,7 +35,8 @@ const AuthForm = ({ register = false, action }) => {
       return;
     }
 
-    console.log("success");
+    // Redirects to the home page
+    router.push("/");
   };
 
   return (

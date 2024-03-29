@@ -2,30 +2,24 @@
 
 import styles from "@/app/login/login.module.css";
 import AuthForm from "@/app/components/user-auth-form/auth-form";
-import { signIn } from "next-auth/react";
-import { useSession } from "next-auth/react";
+import { login } from "@/app/utils/login";
+import { signOut, useSession } from "next-auth/react";
 
 const LoginPage = () => {
-  const { data: session } = useSession();
-  const login = async (loginData) => {
+
+  const submitLogIn = async (loginData) => {
     try {
       // gets the name and password from the form
       const { email, password } = loginData;
 
-      // sends the name and password to the server to sign in
-      const res = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-      });
+      const res = await login(email, password);
 
-      if (res.error) {
-        return { success: false, error: "Invalid Credentials" };
+      if (!res.success) {
+        return { success: false, error: res.error };
       }
 
-
-      // Returns the users name
-      return { success: false, error: session?.user?.name };
+      // Sign in successful, redirects to the home page
+      return { success: true };
     } catch (e) {
       return { success: false, error: "An error occurred in the client" };
     }
@@ -33,7 +27,7 @@ const LoginPage = () => {
 
   return (
     <div className={styles.loginPage}>
-      <AuthForm action={login} />
+      <AuthForm action={submitLogIn} />
     </div>
   );
 };
