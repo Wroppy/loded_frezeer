@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createUser } from "@/app/lib/handleData";
+import { createUser } from "@/app/lib/handleAuth";
 
 export async function POST(req, res) {
   try {

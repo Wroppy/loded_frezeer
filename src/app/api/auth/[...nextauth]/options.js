@@ -1,5 +1,5 @@
 import CredentialsProvider from "next-auth/providers/credentials";
-import { isAuthValid } from "@/app/lib/handleData";
+import { isAuthValid } from "@/app/lib/handleAuth";
 
 
 export const options = {

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isAuthValid } from "@/app/lib/handleData";
+import { isAuthValid } from "@/app/lib/handleAuth";
 
 export async function POST(req, res) {
   try {

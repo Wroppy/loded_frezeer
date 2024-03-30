@@ -5,7 +5,7 @@ import { hashPassword, comparePassword } from "@/app/lib/utils";
 // Returns a list of all users in the database
 export const getUsers = async () => {
   await connectToDb();
-  const users = await User.find();
+  const users = await Tenants.find();
   return users;
 };
 
