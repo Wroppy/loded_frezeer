@@ -4,7 +4,7 @@ import { Roboto } from "next/font/google";
 import { theme } from "./theme/dark";
 import { ThemeProvider } from "@mui/material/styles";
 import Navbar from "@/app/components/navbar/navbar";
-import { AuthProvider } from "@/app/providers";
+
 const roboto = Roboto({ weight: ["400"], subsets: ["latin"] });
 
 export const metadata = {
@@ -16,20 +16,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <AuthProvider>
-          <AppRouterCacheProvider
-            options={{ enableCssLayer: true, key: "css" }}
-          >
-            <ThemeProvider theme={theme}>
-              <main className="app">
-                <div className="header">
-                  <Navbar />
-                </div>
-                <div className="content">{children}</div>
-              </main>
-            </ThemeProvider>
-          </AppRouterCacheProvider>
-        </AuthProvider>
+        <AppRouterCacheProvider options={{ enableCssLayer: true, key: "css" }}>
+          <ThemeProvider theme={theme}>
+            <main className="app">
+              <div className="header">
+                <Navbar />
+              </div>
+              <div className="content">{children}</div>
+            </main>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

@@ -8,11 +8,9 @@ import { useState } from "react";
 import DrawerHeader from "@/app/components/navbar/drawer/drawer-header";
 import DrawerLinks from "@/app/components/navbar/drawer/drawer-links";
 import DrawerFooter from "@/app/components/navbar/drawer/drawer-footer";
-import { useSession } from "next-auth/react";
 
 const VerticalNav = () => {
   const [open, setOpen] = useState(false);
-  const { data: session } = useSession();
 
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
@@ -25,7 +23,7 @@ const VerticalNav = () => {
           <DrawerFooter />
         </div>
       </Drawer>
-      <Button disabled={!session}  onClick={openDrawer} className={styles.drawerButton}>
+      <Button onClick={openDrawer} className={styles.drawerButton}>
         <Menu />
       </Button>
     </>

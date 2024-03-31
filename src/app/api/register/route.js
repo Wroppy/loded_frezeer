@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createUser } from "@/app/lib/handleAuth";
+import { jwtSign } from "@/app/lib/utils";
 
 export async function POST(req, res) {
   try {
@@ -12,7 +13,7 @@ export async function POST(req, res) {
     const password = body.password;
 
     // Creates the user
-    const { success, error } = await createUser(name, email, password);
+    const { success, error, id } = await createUser(name, email, password);
 
     // if there was an error creating the user there was a duplicate email
     if (!success) {
@@ -22,7 +23,10 @@ export async function POST(req, res) {
       });
     }
 
-    return NextResponse.json({ success: true });
+    // Returns JWT token for the user
+    const user = { name, id: jwtSign(id) };
+
+    return NextResponse.json({ success: true, user });
   } catch (e) {
     return NextResponse.json({
       success: false,

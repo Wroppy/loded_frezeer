@@ -1,8 +1,7 @@
 import { postFetch } from "@/app/utils/clientFetch";
-import { login } from "@/app/lib/auth/login";
 
 // Registers a user with the given form data
-export const register = async (registerData) => {
+export const registerAction = async (registerData) => {
   // Returns are dealt with in the AuthForm component
   try {
     // Sends a request to the server to register the user
@@ -15,18 +14,14 @@ export const register = async (registerData) => {
 
     // If the request was successful, checks for an error
     const data = await res.json();
-    if (data.error) {
+    if (!data.success) {
       return { success: false, error: data.error };
     }
 
-    const { email, password } = registerData;
-
-    // If there is no error, the user is registered
-    res = await login(email, password);
-
-    if (!res.success) {
-      return { success: false, error: res.error };
-    }
+    // Adds the user to the local storage
+    const { name, id } = data.user;
+    localStorage.setItem("username", name);
+    localStorage.setItem("id", id);
 
     return { success: true };
   } catch (e) {
