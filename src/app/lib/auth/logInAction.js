@@ -20,8 +20,9 @@ export const logInAction = async (loginData) => {
     localStorage.setItem("id", id);
 
     // Cookie with id and username
-    document.cookie = `id=${id}; username=${name};`;
-
+    document.cookie = `id=${id};`;
+    document.cookie = `username=${name};`;
+ 
     // Sign in successful, redirects to the home page
     return { success: true };
   } catch (e) {

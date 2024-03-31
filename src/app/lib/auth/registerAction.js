@@ -25,6 +25,7 @@ export const registerAction = async (registerData) => {
 
     // Cookie with id and username
     document.cookie = `id=${id}; username=${name};`;
+    document.cookie = `username=${name};`;
     
     return { success: true };
   } catch (e) {
