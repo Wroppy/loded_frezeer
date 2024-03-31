@@ -14,3 +14,7 @@ export const comparePassword = async (password, hashedPassword) => {
   const isValid = await bcrypt.compareSync(password, hashedPassword);
   return isValid;
 }
+
+export const get8CharString = () => {
+  return Math.random().toString(36).substring(2, 10);
+}

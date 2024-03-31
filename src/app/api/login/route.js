@@ -11,7 +11,7 @@ export async function POST(req, res) {
     const password = body.password;
 
     const res = await isAuthValid(email, password);
-
+    // console.log(JSON.stringify(await res.json()))
     return NextResponse.json(res);
 
   } catch (e) {

@@ -15,9 +15,8 @@ export const options = {
 
         // Check if the email and password are valid
         const { success, user } = await isAuthValid(email, password);
-
         if (success) {
-          return user;
+          return {name: {name: user.name, id: user.id}}; // Only returns the name attribute of the object for some reason
         } else {
           return null;
         }

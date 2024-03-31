@@ -11,5 +11,5 @@ export const login = async (email, password) => {
   if (res.error) {
     return { success: false, error: "Invalid Credentials" };
   }
-  return { success: true };
+  return { success: true};
 };

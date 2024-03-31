@@ -11,6 +11,7 @@ export default async function Home() {
   return (
     <div className={styles.main}>
       Home Page
+      {JSON.stringify(session)}
     </div>
   );
 }

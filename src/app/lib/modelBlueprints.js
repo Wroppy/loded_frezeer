@@ -1,7 +1,7 @@
-export const flatModel = (userId) => {
-  // Gets a random string of 15 characters
-  const joinId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-  
+import { get8CharString } from "@/app/lib/utils";
+
+export const getFlatModel = (userId) => {
+  const joinId = get8CharString();
   return {
     tenants: [userId],
     joinId,

@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
     min: 6,
     max: 1024,
   },
+  id: {
+    type: String,
+    required: true,
+  },
 });
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 

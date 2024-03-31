@@ -1,6 +1,7 @@
 import connectToDb from "./connectToDb";
 const { User } = require("./models");
-import { hashPassword, comparePassword } from "@/app/lib/utils";
+import { hashPassword, comparePassword, get8CharString } from "@/app/lib/utils";
+
 
 // Returns a list of all users in the database
 export const getUsers = async () => {
@@ -16,8 +17,9 @@ export const createUser = async (name, email, password) => {
   try {
     // Hash the password before storing it in the database
     password = await hashPassword(password);
+    const id = get8CharString();
 
-    const newUser = new User({ name, email, password });
+    const newUser = new User({ name, email, password, id });
     const user = await User.create(newUser);
 
     return { success: true };
@@ -42,8 +44,8 @@ export const isAuthValid = async (email, password) => {
   const isValid = await comparePassword(password, user.password);
 
   if (!isValid) {
-    return { success: false, error: "Password is incorrect", password, pass: user.password };
+    return { success: false, error: "Password is incorrect"};
   }
-  return { success: true, user: {name: user.name} };
+  return { success: true, user: {name: user.name, id: user.id } };
 
 }

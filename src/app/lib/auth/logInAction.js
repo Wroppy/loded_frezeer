@@ -6,7 +6,6 @@ export const logInAction = async (loginData) => {
     const { email, password } = loginData;
 
     const res = await login(email, password);
-
     if (!res.success) {
       return { success: false, error: res.error };
     }
