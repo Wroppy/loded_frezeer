@@ -23,6 +23,9 @@ export const registerAction = async (registerData) => {
     localStorage.setItem("username", name);
     localStorage.setItem("id", id);
 
+    // Cookie with id and username
+    document.cookie = `id=${id}; username=${name};`;
+    
     return { success: true };
   } catch (e) {
     return { success: false, error: "An error occurred in the client" };
