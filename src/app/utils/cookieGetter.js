@@ -1,3 +1,5 @@
+"use client";
+
 // Returns the value of the parsed cookie
 export const cookieGetter = (value) => {
   const cookies = document.cookie.split(';');
