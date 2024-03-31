@@ -4,7 +4,7 @@ import { Roboto } from "next/font/google";
 import { theme } from "./theme/dark";
 import { ThemeProvider } from "@mui/material/styles";
 import Navbar from "@/app/components/navbar/navbar";
-import { AuthProvider } from "@/app/Providers.js";
+import { AuthProvider } from "@/app/providers";
 const roboto = Roboto({ weight: ["400"], subsets: ["latin"] });
 
 export const metadata = {
