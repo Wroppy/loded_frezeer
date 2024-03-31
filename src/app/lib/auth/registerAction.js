@@ -22,10 +22,12 @@ export const registerAction = async (registerData) => {
     const { name, id } = data.user;
     localStorage.setItem("username", name);
     localStorage.setItem("id", id);
+    localStorage.setItem("isInFlat", false);
 
     // Cookie with id and username
     document.cookie = `id=${id}; username=${name};`;
     document.cookie = `username=${name};`;
+    document.cookie = `isInFlat=false;`;
     
     return { success: true };
   } catch (e) {

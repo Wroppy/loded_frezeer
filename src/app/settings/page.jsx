@@ -5,6 +5,7 @@ import SettingsHeading from "@/app/settings/settings-heading";
 const SettingsPage = () => {
   return ( <div className={styles.settingsPage}>
     <SettingsHeading/>
+    
   </div>);
 }
  

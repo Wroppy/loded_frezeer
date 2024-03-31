@@ -23,7 +23,6 @@ export const createUser = async (name, email, password) => {
 
     return { success: true, id };
   } catch (error) {
-    console.log(error)
     return { success: false, error };
   }
 };
@@ -33,7 +32,6 @@ export const isAuthValid = async (email, password) => {
 
   // Checks that the email exists, and the password matches
   const user = await User.findOne({ email });
-
   if (!user) {
     return { success: false, error: "User not found" };
   }
@@ -45,5 +43,5 @@ export const isAuthValid = async (email, password) => {
     return { success: false, error: "Password is incorrect" };
   }
 
-  return { success: true, user: { name: user.name, id: user.id } };
+  return { success: true, user: { name: user.name, id: user.userId } };
 };

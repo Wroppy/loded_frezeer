@@ -1,5 +1,6 @@
 import { User, Flat } from "@/app/lib/models";
 import { getFlatModel } from "@/app/lib/modelBlueprints";
+import { jwtVerify } from "@/app/lib/utils";
 
 export const createFlat = async (userId) => {
   try {
@@ -12,3 +13,22 @@ export const createFlat = async (userId) => {
     return { success: false, error };
   }
 };   
+
+// Used to find if a user is in a flat
+export const isUserInFlat = async (encryptedId) => {
+  try {
+    const userId = jwtVerify(encryptedId);
+
+    // Finds all flats that the user is in 
+    let flats = await Flat.find();
+    flats = flats.filter((flat) => flat.tenants.includes(userId));
+
+    if (flats.length > 0) {
+      return { success: true, isInFlat: true };
+    } else {
+      return { success: true, isInFlat: false };
+    }
+  } catch (error) {
+    return { success: false, isInFlat: false };
+  }
+};

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createUser } from "@/app/lib/handleAuth";
 import { jwtSign } from "@/app/lib/utils";
+import { isUserInFlat } from "@/app/lib/handleFlat";
 
 export async function POST(req, res) {
   try {
@@ -23,8 +24,10 @@ export async function POST(req, res) {
       });
     }
 
+    // Checks if the user is in a flat
+    let isInFlat = await isUserInFlat(id); 
     // Returns JWT token for the user
-    const user = { name, id: jwtSign(id) };
+    const user = { name, id: jwtSign(id), isInFlat: isInFlat.isInFlat };
 
     return NextResponse.json({ success: true, user });
   } catch (e) {
