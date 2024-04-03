@@ -5,7 +5,7 @@
  * - _next/image (image optimization files)
  * - favicon.ico (favicon file)
  */
-export const defaultMatcherConfig = [
+export let defaultMatcherConfig = [
   {
     source: "/((?!api|_next/static|_next/image|favicon.ico).*)",
     missing: [
