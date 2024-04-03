@@ -1,3 +1,22 @@
 .settingsPage {
   padding: 16px;
 }
+
+.flatManager {
+  padding: 12px 24px;
+
+}
+
+.flatName {
+  padding: 16px;
+  margin-bottom: 12px;
+  /* display: flex; */
+  align-items: center;
+}
+.tenantListView {
+  padding: 16px;
+}
+
+.flatSetUpText {
+  margin-right: 16px;
+}
