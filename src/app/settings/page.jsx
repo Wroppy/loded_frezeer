@@ -5,7 +5,7 @@ import FlatManager from "@/app/settings/flat-manager/flat-manager";
 
 const SettingsPage = () => {
   return ( <div className={styles.settingsPage}>
-    <SettingsHeading/>
+    <SettingsHeading />
     <FlatManager/>
     
   </div>);
