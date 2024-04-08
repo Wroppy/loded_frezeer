@@ -1,22 +1,23 @@
 "use client";
 
-import { Paper } from "@mui/material";
 import styles from "@/app/settings/settings.module.css";
 import FlatSummary from "@/app/settings/flat-manager/flat-summary/flat-summary";
 import NoFlat from "@/app/settings/flat-manager/enter-flat/no-flat";
 import { useEffect, useState } from "react";
 import LoadingSkeleton from "./loading";
+import { fetchData } from "@/app/utils/clientFetch";
 
 const FlatManager = () => {
   const [loading, setLoading] = useState(true);
-  const [flatData, setFlatData] = useState({ flatName: "", joinCode: "" });
+  const [flatData, setFlatData] = useState({ flatName: "", joinCode: "", tenants: []});
 
   const fetchFlatData = async () => {
-    // Fetch flat data here
-    setTimeout(() => {
-      setFlatData({ flatName: "flat name", joinCode: "abcdefgh" });
-      setLoading(false);
-    }, 3000);
+    const data = await fetchData("get-flat-settings");
+    setLoading(false);
+    if (data.success) {
+      setFlatData(data.flat);
+    }
+
   };
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const FlatManager = () => {
         <FlatSummary
           flatName={flatData.flatName}
           joinCode={flatData.joinCode}
+          tenants={flatData.tenants}
         />
       )}
     </div>

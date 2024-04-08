@@ -52,3 +52,32 @@ export const joinFlat = async (userId, joinId) => {
     return { success: false, error: "An error occurred while joining the flat" };
   }
 }
+
+// Returns data for the settings page
+export const getFlatSettings = async (userId) => {
+  try {
+    const flatData = await Flat.findOne({
+      tenants: userId,
+    });
+
+    if (!flatData) {
+      return { success: false };
+    }
+
+    let user;
+    let tenants = [];
+    for (let tenantId of flatData.tenants) {
+      user = await User.findOne({ userId: tenantId });
+      tenants.push(user.name);
+    }
+    
+    const flat = {
+      flatName: flatData.name,
+      joinCode: flatData.joinId,
+      tenants,
+    }
+    return { success: true, flat };
+  } catch (error) {
+    return { success: false, error: "An error occurred while getting flat settings" };
+  }
+}
