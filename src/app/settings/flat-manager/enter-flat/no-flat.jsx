@@ -1,17 +1,17 @@
 import { Paper } from "@mui/material";
 import styles from "@/app/settings/settings.module.css";
-import CreateFlatForm from "@/app/settings/flat-manager/enter-flat/create-flat-form";
+import EnterFlat from "./enter-flat";
 
 const NoFlat = () => {
   return (
     <>
      <Paper className={styles.flatName}>
         <span className={styles.flatSetUpText}>
-          You have not set up a flat yet. Create a new one below.
+          You have not set up a flat yet. Create a new one or join one below.
         </span>
       </Paper>
-      {/* Form for creating a new flat */}
-      <CreateFlatForm />
+      {/* Form for creating or joining a new flat */}
+      <EnterFlat />
     </>
   );
 };

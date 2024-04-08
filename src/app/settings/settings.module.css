@@ -24,7 +24,7 @@
   margin-right: 16px;
 }
 
-.createFlatButtonContainer {
+.createFlatButtonContainer, .joinFlatButton {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -42,8 +42,14 @@
   color: var(--error-primary);
 }
 
-.createFlatForm {
+.createFlatForm, .joinFlat {
   padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.enterFlat {
   display: flex;
   flex-direction: column;
   gap: 12px;

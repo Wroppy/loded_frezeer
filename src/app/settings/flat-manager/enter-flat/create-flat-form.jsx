@@ -5,8 +5,7 @@ import styles from "@/app/settings/settings.module.css";
 import { useState } from "react";
 import { fetchData } from "@/app/utils/clientFetch";
 
-const CreateFlatForm = () => {
-  const [loading, setLoading] = useState(false);
+const CreateFlatForm = ({loading, setLoading}) => {
   const [error, setError] = useState("");
 
   const createFlat = async (e) => {
