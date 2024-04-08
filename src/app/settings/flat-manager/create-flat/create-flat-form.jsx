@@ -4,7 +4,6 @@ import { Button, CircularProgress, Paper, TextField } from "@mui/material";
 import styles from "@/app/settings/settings.module.css";
 import { useState } from "react";
 import { postFetch } from "@/app/utils/clientFetch";
-import { FaxTwoTone } from "@mui/icons-material";
 
 const CreateFlatForm = () => {
   const [loading, setLoading] = useState(false);
