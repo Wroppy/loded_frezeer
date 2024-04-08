@@ -2,15 +2,15 @@ import { User, Flat } from "@/app/lib/models";
 import { getFlatModel } from "@/app/lib/modelBlueprints";
 import { jwtVerify } from "@/app/lib/utils";
 
-export const createFlat = async (userId) => {
+export const createFlat = async (userId, name) => {
   try {
-    const flatModel = getFlatModel(userId);
+    const flatModel = getFlatModel(userId, name);
     const newFlat = new Flat(flatModel);
     const flat = await Flat.create(newFlat);
     
     return { success: true, flat };
   } catch (error) {
-    return { success: false, error };
+    return { success: false, error: "You are already in a flat" };
   }
 };   
 

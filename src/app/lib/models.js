@@ -31,6 +31,10 @@ const User = mongoose.models.User || mongoose.model("User", userSchema);
 
 // Flat:
 const flatSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
   tenants: {
     type: [String], // Array of user IDs
     required: true,
