@@ -1,21 +1,11 @@
-"use client";
-
-import { cookieGetter } from "@/app/utils/cookieGetter";
-import { useEffect, useState } from "react";
+import { cookies } from "next/headers";
 
 const SettingsHeading = () => {
-  const username = cookieGetter("username");
+  const username = cookies().get("username").value;
 
-  // Deals with the hydration error 
-  const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
- 
-
-  return ( <div>
+return ( <div>
     <h3>
-      Welcome {isClient && username}!
+      Welcome {username}!
     </h3>
   </div> );
 }
