@@ -5,9 +5,6 @@ export const logInAction = async (loginData) => {
     // gets the name and password from the form
     const { email, password } = loginData;
     const res = await postFetch("login", { email, password });
-    if (!res.ok) {
-      return { success: false, error: res.error };
-    }
 
     const data = await res.json();
     if (!data.success) {
@@ -24,7 +21,7 @@ export const logInAction = async (loginData) => {
     document.cookie = `id=${id};`;
     document.cookie = `username=${name};`;
     document.cookie = `isInFlat=${isInFlat};`;
- 
+
     // Sign in successful, redirects to the home page
     return { success: true };
   } catch (e) {

@@ -18,22 +18,28 @@ export async function POST(req, res) {
 
     // if there was an error creating the user there was a duplicate email
     if (!success) {
-      return NextResponse.json({
-        success: false,
-        error: "Email already in use",
-      });
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Email already in use",
+        },
+        { status: 401 }
+      );
     }
 
     // Checks if the user is in a flat
-    let isInFlat = await isUserInFlat(id); 
+    let isInFlat = await isUserInFlat(id);
     // Returns JWT token for the user
     const user = { name, id: jwtSign(id), isInFlat: isInFlat.isInFlat };
 
     return NextResponse.json({ success: true, user });
   } catch (e) {
-    return NextResponse.json({
-      success: false,
-      error: "An error occurred in the server",
-    });
+    return NextResponse.json(
+      {
+        success: false,
+        error: "An error occurred in the server",
+      },
+      { status: 500 }
+    );
   }
 }

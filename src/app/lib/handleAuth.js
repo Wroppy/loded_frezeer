@@ -28,20 +28,24 @@ export const createUser = async (name, email, password) => {
 };
 
 export const isAuthValid = async (email, password) => {
-  await connectToDb();
+  try {
+    await connectToDb();
 
-  // Checks that the email exists, and the password matches
-  const user = await User.findOne({ email });
-  if (!user) {
-    return { success: false, error: "User not found" };
+    // Checks that the email exists, and the password matches
+    const user = await User.findOne({ email });
+    if (!user) {
+      return { success: false, error: "User not found" };
+    }
+
+    // Compares the hashed password with the stored password
+    const isValid = await comparePassword(password, user.password);
+
+    if (!isValid) {
+      return { success: false, error: "Password is incorrect" };
+    }
+
+    return { success: true, user: { name: user.name, id: user.userId } };
+  } catch (e) {
+    return { success: false, error: "Error occurred in the server" };
   }
-
-  // Compares the hashed password with the stored password
-  const isValid = await comparePassword(password, user.password);
-
-  if (!isValid) {
-    return { success: false, error: "Password is incorrect" };
-  }
-
-  return { success: true, user: { name: user.name, id: user.userId } };
 };

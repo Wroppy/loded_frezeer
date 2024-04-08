@@ -19,18 +19,23 @@ export async function POST(req, res) {
 
       const encryptedId = jwtSign(id);
       res.user.id = encryptedId;
+
+      let isInFlat = await isUserInFlat(res.user.id);
+      res.user.isInFlat = isInFlat.isInFlat;
+
+      return NextResponse.json(res);
+    } else {
+      return NextResponse.json(res, { status: 401 });
     }
-
-    let isInFlat = await isUserInFlat(res.user.id);
-    res.user.isInFlat = isInFlat.isInFlat;
-
-    return NextResponse.json(res);
   } catch (e) {
-    console.log(e)
-    return NextResponse.json({
-      success: false,
-      error: "An error occurred in the server",
-      message: e.message,
-    });
+    console.log(e);
+    return NextResponse.json(
+      {
+        success: false,
+        error: "An error occurred in the server",
+        message: e.message,
+      },
+      { status: 500 }
+    );
   }
 }
