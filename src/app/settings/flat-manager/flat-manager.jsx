@@ -7,7 +7,7 @@ const FlatManager = () => {
   return (
     <div className={styles.flatManager}>
       <h3>Manage your flat:</h3>
-      <NoFlat />
+      <FlatSummary />
     </div>
   );
 };

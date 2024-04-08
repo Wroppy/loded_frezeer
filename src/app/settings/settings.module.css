@@ -18,12 +18,17 @@
   }
 }
 
-.flatName {
+.flatName, .joinCode {
   padding: 16px;
   margin-bottom: 12px;
-  /* display: flex; */
+  display: flex;
   align-items: center;
 }
+
+.joinCode {
+  justify-content: space-between;
+}
+
 .tenantListView {
   padding: 16px;
 }
