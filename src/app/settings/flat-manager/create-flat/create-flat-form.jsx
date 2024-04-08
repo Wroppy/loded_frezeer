@@ -3,23 +3,31 @@
 import { Button, CircularProgress, Paper, TextField } from "@mui/material";
 import styles from "@/app/settings/settings.module.css";
 import { useState } from "react";
+import { postFetch } from "@/app/utils/clientFetch";
+import { FaxTwoTone } from "@mui/icons-material";
 
 const CreateFlatForm = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const createFlat = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
     // Get the flat name from the form
     const flatName = e.target.flatName.value.trim();
+    if (!flatName) return;
 
-    // TODO: Send POST request to the api to add the new flat
+    setLoading(true);
+
+    const res = await postFetch("create-flat", { flatName });
+    const data = await res.json();
     
-
     setLoading(false);
-    
-    
+    if (!data.success) {
+      setError(data.error);
+
+    }
+      // TODO: Reload page to get flat data    
   };
 
   return (
@@ -34,16 +42,21 @@ const CreateFlatForm = () => {
           inputProps={{ minLength: 3, maxLength: 20 }}
           required
         />
-        <div className={styles.createFlatButtonContainer}>
-          {loading && <CircularProgress size={16} />}
-          <Button
-            disabled={loading}
-            variant="outlined"
-            color="primary"
-            type="submit"
-          >
-            Create
-          </Button>
+        <div className={styles.formFooter}>
+          <div className={styles.error}>
+            {error}
+          </div>
+          <div className={styles.createFlatButtonContainer}>
+            {loading && <CircularProgress size={16} />}
+            <Button
+              disabled={loading}
+              variant="outlined"
+              color="primary"
+              type="submit"
+            >
+              Create
+            </Button>
+          </div>
         </div>
       </form>
     </Paper>
