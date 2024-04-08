@@ -9,3 +9,12 @@ export const postFetch = async (url, body) => {
 
   return res;
 };
+
+export const fetchData = async (url, body) => {
+  try {
+    const res = await postFetch(url, body);
+    return await res.json();
+  } catch {
+    return { success: false, error: "An error occurred in the client" };
+  }
+};
