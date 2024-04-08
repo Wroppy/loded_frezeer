@@ -7,19 +7,20 @@ export const createFlat = async (userId, name) => {
     const flatModel = getFlatModel(userId, name);
     const newFlat = new Flat(flatModel);
     const flat = await Flat.create(newFlat);
-    
+
     return { success: true, flat };
   } catch (error) {
-    return { success: false, error: "You are already in a flat" };
+    console.log(error);
+    return { success: false, error: "An error occurred while creating a flat" };
   }
-};   
+};
 
 // Used to find if a user is in a flat
 export const isUserInFlat = async (encryptedId) => {
   try {
     const userId = jwtVerify(encryptedId);
 
-    // Finds all flats that the user is in 
+    // Finds all flats that the user is in
     let flats = await Flat.find();
     flats = flats.filter((flat) => flat.tenants.includes(userId));
 
