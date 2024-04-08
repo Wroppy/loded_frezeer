@@ -1,6 +1,6 @@
 import { Paper } from "@mui/material";
 import styles from "@/app/settings/settings.module.css";
-import CreateFlatForm from "@/app/settings/flat-manager/create-flat/create-flat-form";
+import CreateFlatForm from "@/app/settings/flat-manager/enter-flat/create-flat-form";
 
 const NoFlat = () => {
   return (
