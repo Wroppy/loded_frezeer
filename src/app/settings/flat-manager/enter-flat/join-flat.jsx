@@ -15,7 +15,7 @@ const JoinFlat = ({ loading, setLoading }) => {
 
   return (
     <Paper>
-      <form className={styles.joinFlat}>
+      <form className={styles.joinFlat} onSubmit={joinFlat}>
         <span className={`${styles.joinFlatHeading}`}>Join Flat:</span>
         <TextField
           name="flatJoinCode"
@@ -35,7 +35,6 @@ const JoinFlat = ({ loading, setLoading }) => {
               variant="outlined"
               color="primary"
               disabled={loading}
-              onClick={joinFlat}
             >
 							Join Flat
 						</Button>
