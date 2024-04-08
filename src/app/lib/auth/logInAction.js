@@ -13,9 +13,6 @@ export const logInAction = async (loginData) => {
 
     // Adds the user to the local storage
     const { name, id, isInFlat } = data.user;
-    localStorage.setItem("username", name);
-    localStorage.setItem("id", id);
-    localStorage.setItem("isInFlat", isInFlat);
 
     // Cookie with id and username
     document.cookie = `id=${id};`;

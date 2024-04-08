@@ -20,10 +20,6 @@ export const registerAction = async (registerData) => {
 
     // Adds the user to the local storage
     const { name, id } = data.user;
-    localStorage.setItem("username", name);
-    localStorage.setItem("id", id);
-    localStorage.setItem("isInFlat", false);
-
     // Cookie with id and username
     document.cookie = `id=${id}; username=${name};`;
     document.cookie = `username=${name};`;
