@@ -21,11 +21,12 @@
 .flatName, .joinCode {
   padding: 16px;
   margin-bottom: 12px;
-  display: flex;
   align-items: center;
 }
 
 .joinCode {
+  display: flex;
+
   justify-content: space-between;
 }
 
@@ -63,6 +64,13 @@
 }
 
 .enterFlat {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton {
+  margin-bottom: 12px;
   display: flex;
   flex-direction: column;
   gap: 12px;

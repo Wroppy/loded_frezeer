@@ -2,9 +2,7 @@ import TenantListView from "@/app/settings/flat-manager/flat-summary/tenants-lis
 import { Paper } from "@mui/material";
 import styles from "@/app/settings/settings.module.css";
 import JoinCodeContainer from "@/app/settings/flat-manager/flat-summary/join-code-container";
-const FlatSummary = async () => {
-  const flatName = "Flat 1A";
-  const joinCode = "abcdefgh";
+const FlatSummary = ({flatName, joinCode}) => {
 
   return (
     <div>
