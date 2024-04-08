@@ -3,7 +3,7 @@
 import { Button, CircularProgress, Paper, TextField } from "@mui/material";
 import styles from "@/app/settings/settings.module.css";
 import { useState } from "react";
-import { postFetch } from "@/app/utils/clientFetch";
+import { fetchData } from "@/app/utils/clientFetch";
 
 const CreateFlatForm = () => {
   const [loading, setLoading] = useState(false);
@@ -18,8 +18,7 @@ const CreateFlatForm = () => {
 
     setLoading(true);
 
-    const res = await postFetch("create-flat", { flatName });
-    const data = await res.json();
+    const data = await fetchData("create-flat", { flatName })
     
     setLoading(false);
     if (!data.success) {
