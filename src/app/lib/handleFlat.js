@@ -33,3 +33,22 @@ export const isUserInFlat = async (encryptedId) => {
     return { success: false, isInFlat: false };
   }
 };
+
+export const joinFlat = async (userId, joinId) => {
+  try {
+    const flat = await Flat.findOne({
+      joinId,
+    }); 
+
+    if (!flat) {
+      return { success: false, error: "Invalid join code" };
+    }
+
+    flat.tenants.push(userId);
+    await flat.save();
+
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: "An error occurred while joining the flat" };
+  }
+}

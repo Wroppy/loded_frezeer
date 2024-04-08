@@ -3,6 +3,7 @@
 import { Button, CircularProgress, Paper, TextField } from "@mui/material";
 import styles from "@/app/settings/settings.module.css";
 import { useState } from "react";
+import { fetchData } from "@/app/utils/clientFetch";
 
 const JoinFlat = ({ loading, setLoading }) => {
   const [error, setError] = useState("");
@@ -11,6 +12,20 @@ const JoinFlat = ({ loading, setLoading }) => {
 			e.preventDefault();
 
 			setLoading(true);
+
+      const joinId = e.target.flatJoinCode.value;
+
+      const response = await fetchData("join-flat", {joinId});
+
+      if (response.success) {
+        // TODO: Reload
+      }
+
+      if (response.error) {
+        setError(response.error);
+      }
+
+      setLoading(false);
 	};
 
   return (
