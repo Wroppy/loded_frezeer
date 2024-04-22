@@ -8,6 +8,8 @@ import { fetchData } from "@/app/utils/clientFetch";
 const JoinFlat = ({ loading, setLoading }) => {
   const [error, setError] = useState("");
 
+  
+
 	const joinFlat = async (e) => {
 			e.preventDefault();
 
@@ -18,7 +20,7 @@ const JoinFlat = ({ loading, setLoading }) => {
       const response = await fetchData("join-flat", {joinId});
 
       if (response.success) {
-        // TODO: Reload
+        window.location.reload();
       }
 
       if (response.error) {

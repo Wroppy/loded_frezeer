@@ -1,9 +1,9 @@
-import * as jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken';
 
-export const jwtSign = async (payload) => {
+export const jwtSign = (payload) => {
   return jwt.sign(payload, process.env.JWT_SECRET);
 };
 
-export const jwtVerify = async (token) => {
+export const jwtVerify = (token) => {
   return jwt.verify(token, process.env.JWT_SECRET);
 };

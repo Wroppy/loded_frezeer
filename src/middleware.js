@@ -27,6 +27,7 @@ export function middleware(request) {
   // If there is no cookie, redirects to login
   if (!cookie) {
     return nonAuthRedirect(request);
+
   }
   // Redirects to login if user has an invalid id
   try {

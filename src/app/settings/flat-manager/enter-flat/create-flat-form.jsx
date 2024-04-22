@@ -22,9 +22,10 @@ const CreateFlatForm = ({loading, setLoading}) => {
     setLoading(false);
     if (!data.success) {
       setError(data.error);
+      return;
 
     }
-      // TODO: Reload page to get flat data    
+    window.location.reload();
   };
 
   return (
