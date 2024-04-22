@@ -1,4 +1,4 @@
-import { get8CharString } from "@/app/lib/utils";
+import { get8CharString } from "@/app/lib/auth/password";
 
 export const getFlatModel = (userId, name) => {
   const joinId = get8CharString();

@@ -1,6 +1,10 @@
 import connectToDb from "./connectToDb";
 const { User } = require("./models");
-import { hashPassword, comparePassword, get8CharString } from "@/app/lib/utils";
+import {
+  hashPassword,
+  comparePassword,
+  get8CharString,
+} from "@/app/lib/auth/password";
 
 // Returns a list of all users in the database
 export const getUsers = async () => {

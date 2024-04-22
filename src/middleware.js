@@ -28,12 +28,11 @@ export function middleware(request) {
   if (!cookie) {
     return nonAuthRedirect(request);
   }
-
   // Redirects to login if user has an invalid id
   try {
-    jwtVerify(cookie);
     return NextResponse.next();
   } catch (error) {
-    nonAuthRedirect(request);
+    console.log(error)
+    return nonAuthRedirect(request);
   }
 }
