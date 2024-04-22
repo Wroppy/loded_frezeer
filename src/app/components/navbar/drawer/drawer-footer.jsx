@@ -6,7 +6,7 @@ import { IconButton } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useRouter } from "next/navigation";
 
-const DrawerFooter = () => {
+const DrawerFooter = ( { closeDrawer }) => {
   const router = useRouter();
 
   const logout = async () => {
@@ -17,11 +17,14 @@ const DrawerFooter = () => {
         .replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`);
     });
 
+    closeDrawer();
     // Redirect to login page
     window.location.href = "/login";
+    
   }
 
   const settings = () => {
+    closeDrawer();
     router.push("/settings");
   }
 

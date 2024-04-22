@@ -20,7 +20,7 @@ const VerticalNav = () => {
         <div className={styles.drawer}>
           <DrawerHeader />
           <DrawerLinks />
-          <DrawerFooter />
+          <DrawerFooter closeDrawer={closeDrawer}/>
         </div>
       </Drawer>
       <Button onClick={openDrawer} className={styles.drawerButton}>
