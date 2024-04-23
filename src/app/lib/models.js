@@ -62,18 +62,18 @@ const flatSchema = new mongoose.Schema({
   ],
   shoppingList: [
     {
-      Name: {
+      name: {
         type: String,
         required: true,
       },
-      Description: {
+      description: {
         type: String,
       },
-      Quantity: {
+      quantity: {
         type: Number,
         required: true,
       },
-      userCreated: {
+      addedBy: {
         type: String, // User ID
         required: true,
       },
