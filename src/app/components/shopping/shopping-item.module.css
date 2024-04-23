@@ -1,13 +1,14 @@
 .shoppingItem {
-  padding: 16px;
+  padding: 10px 16px 16px 16px;
   display: flex;
   flex-direction: column;
-  
+
+  border: 1px solid rgba(0, 0, 0, 0);
 }
 
 .itemName {
   font-size: 1.25rem;
-} 
+}
 
 .itemDescription {
   display: flex;
@@ -16,9 +17,24 @@
 .shoppingItemHeader {
   display: flex;
   justify-content: space-between;
-
+  align-items: center;
 }
 
-.itemDescription, .itemAddedBy {
+.itemDescription,
+.itemAddedBy {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.checkBoxHeading {
+  display: flex;
+  gap: 8px;
+}
+
+.checkBoxHeading {
+  display: flex;
+  align-items: center;
+}
+
+.checkedItem {
+  border-color: var(--primary);
 }

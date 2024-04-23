@@ -1,14 +1,27 @@
+"use client";
+
 import styles from "@/app/components/shopping/shopping-item.module.css";
-import { Paper } from "@mui/material";
+import { Paper, Checkbox } from "@mui/material";
 import ShoppingItemDescription from "@/app/components/shopping/shopping-item-description";
+import { useState } from "react";
 
 const ShoppingItem = ({ name, description, quantity, addedBy }) => {
+  const [checked, setChecked] = useState(false);
+
+  const handleCheck = () => {
+    setChecked(!checked);
+  };
 
   return (
-    <Paper className={styles.shoppingItem}>
-      
+    <Paper
+      className={`${styles.shoppingItem} ${checked && styles.checkedItem}`}
+      onClick={handleCheck}
+    >
       <div className={styles.shoppingItemHeader}>
-        <div className={styles.itemName}>{name}</div>
+        <div className={styles.checkBoxHeading}>
+          <Checkbox checked={checked} onChange={handleCheck} />
+          <div className={styles.itemName}>{name}</div>
+        </div>
         <div className={styles.itemQuantity}>Quantity: {quantity}</div>
       </div>
       <div className={styles.itemDescription}>
@@ -18,6 +31,5 @@ const ShoppingItem = ({ name, description, quantity, addedBy }) => {
     </Paper>
   );
 };
-
 
 export default ShoppingItem;
