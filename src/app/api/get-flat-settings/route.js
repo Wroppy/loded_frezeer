@@ -8,9 +8,7 @@ export async function POST(req, res) {
     // Gets the necessary inputs for creating a new flat
     const id = req.cookies.get("id").value;
     const decryptedId = jwtVerify(id);
-
     const result = await getFlatSettings(decryptedId);
-    // console.log(JSON.stringify(result))
     return NextResponse.json(result, { status: 200 });
   } catch (e) {
     return NextResponse.json(
