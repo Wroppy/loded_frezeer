@@ -1,0 +1,24 @@
+.shoppingItem {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.itemName {
+  font-size: 1.25rem;
+} 
+
+.itemDescription {
+  display: flex;
+  gap: 4px;
+}
+.shoppingItemHeader {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.itemDescription, .itemAddedBy {
+  color: rgba(255, 255, 255, 0.5);
+}
