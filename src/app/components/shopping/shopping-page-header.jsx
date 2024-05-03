@@ -1,13 +1,11 @@
 import styles from "@/app/components/shopping/shopping-page-header.module.css";
-import { Button } from "@mui/material";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import ModalButton from "@/app/components/shopping/add-shopping-item-modal.jsx/modal-button";
 
 const ShoppingHeader = () => {
+
   return (
     <div className={styles.shoppingHeader}>
-      <Button variant="outlined" color="primary" className={styles.addItemButton}>
-        Add Item <AddOutlinedIcon />
-      </Button>
+      <ModalButton/>
     </div>
   );
 };
