@@ -4,6 +4,7 @@ import styles from "@/app/shopping/shopping-page.module.css";
 import ShoppingItem from "@/app/components/shopping/shopping-item";
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import { useState } from "react";
+import ShoppingList from "../components/shopping/shopping-list";
 
 const shopping = [
   {
@@ -33,17 +34,7 @@ const ShoppingPage = () => {
     <div className={styles.shoppingPage}>
       <div className={styles.shoppingPageHeader}></div>
       <div className={styles.shoppingContent}>
-        <div className={styles.shoppingItems}>
-          {shoppingList.map((item, index) => (
-            <ShoppingItem
-              key={index}
-              name={item.name}
-              description={item.description}
-              quantity={item.quantity}
-              addedBy={item.addedBy}
-            />
-          ))}
-        </div>
+        <ShoppingList/>
       </div>
     </div>
   );

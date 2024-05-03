@@ -1,28 +1,53 @@
 .shoppingItem {
-  padding: 10px 16px 16px 16px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-
+  
   border: 1px solid rgba(0, 0, 0, 0);
 }
 
 .itemName {
   font-size: 1.25rem;
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.itemQuantity {
+  grid-area: 1 / 2 / 2 / 3;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 .itemDescription {
+  grid-area: 2 / 1 / 4 / 2;
   display: flex;
   gap: 4px;
 }
+
+.itemAddedBy {
+  grid-area: 3 / 1 / 4 / 2;
+}
+
 .shoppingItemHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.purchaseItem {
+  grid-area: 2 / 2 / 4 / 3;
+}
+
 .itemDescription,
 .itemAddedBy {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.itemDescription {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+
 }
 
 .checkBoxHeading {
@@ -37,4 +62,16 @@
 
 .checkedItem {
   border-color: var(--primary);
+}
+
+
+.shoppingItemButtons {
+  display: flex;
+  gap: 4px;
+}
+ 
+.shoppingItemFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

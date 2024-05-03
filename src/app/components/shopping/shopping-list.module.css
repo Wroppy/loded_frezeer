@@ -1,0 +1,20 @@
+.shoppingList {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.shoppingListItems {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+}
+
+.formFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
