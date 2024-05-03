@@ -1,6 +1,6 @@
 "use client";
 
-import { Modal, Paper, Slider, TextField } from "@mui/material";
+import { Modal, Paper, Slider, TextField, Button } from "@mui/material";
 import { useState } from "react";
 import styles from "./add-shopping-item-modal.module.css";
 
@@ -8,6 +8,7 @@ const AddShoppingItemModal = ({ open, closeModal }) => {
   const [itemName, setItemName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [description, setDescription] = useState("");
+  const [error, setError] = useState("example error message");
 
   const quantityChanged = (value) => {
     setQuantity(value);
@@ -21,12 +22,18 @@ const AddShoppingItemModal = ({ open, closeModal }) => {
     }
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+
+  }
+
   return (
     <Modal className={styles.modal} open={open} onClose={closeModal}>
       <Paper className={styles.addShoppingItemModal}>
         <div className={styles.title}>Add Shopping Item</div>
 
-        <form>
+        <form onSubmit={onSubmit}>
           <div className={styles.shoppingInputs}>
             <TextField
               inputProps={{ maxLength: 50, minLength: 3 }}
@@ -75,7 +82,15 @@ const AddShoppingItemModal = ({ open, closeModal }) => {
               placeholder="E.g. Brand, Size, etc."
             />
           </div>
-          <div className={styles.formFooter}></div>
+          <div className={styles.formFooter}>
+            <div className={styles.error}>{error}</div>
+            <Button variant="outlined" className={styles.cancelButton} onClick={closeModal}>
+              Cancel
+            </Button>
+            <Button variant="contained" className={styles.addButton} type="submit">
+              Add Item
+            </Button>
+          </div>
         </form>
       </Paper>
     </Modal>
